@@ -1,5 +1,7 @@
 # Teste de Desenvolvimento Web  ✨
 
+###### Esse projeto trata-se de um desafio que realizei para um processo seletivo de uma empresa X, e então incrementei ao meu portfolio.
+
 ## Sobre o Desafio
 
 Nós temos um problema, atualmente nosso sistema é só um excel, cheio de informações sobre Pokémon. Nós usamos ele como banco de dados e ao mesmo tempo interface de gerenciamento, inserindo, editando, deletando e filtrando os dados.
@@ -9,7 +11,7 @@ A missão é criar um sistema para substituir este excel, pois queremos expandir
 
 ## Solução
 
-  ### Para resolver o problema da planilha Excel, desenvolvi uma aplicação fullstack. Utilizei algumas das pricipais linhas e colunas da planilha como modelo. Nessa aplicação o usuário poderá criar uma conta e inserir seus pokémons, assim como também editar, deletar, listar e filtrar seus pokémons.
+Para resolver o problema da planilha Excel, desenvolvi uma aplicação fullstack. Utilizei algumas das pricipais linhas e colunas da planilha como modelo. Nessa aplicação o usuário poderá criar uma conta e inserir seus pokémons, assim como também editar, deletar, listar e filtrar seus pokémons.
 
 
 ## Tecnologias e Ferramentas utilizadas 🔥
@@ -28,11 +30,11 @@ A missão é criar um sistema para substituir este excel, pois queremos expandir
 
 
 
-# Executando o projeto 🚀
+## Executando o projeto 🚀
   
   ### Realize o clone do projeto.  Certifique-se de usar a branch "MatheusAraujo"
   ```
-  git clone git@github.com:MatheusAraujoDev/teste-desenvolvimento-web.git
+  git clone git@github.com:MatheusAraujoDev/pokedex-prisma-react.git
   ```
 
  ## BACKEND
