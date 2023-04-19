@@ -13,7 +13,7 @@ export class UserRegisterService {
 
     const userAlreadyExists = await prisma.user.findFirst({ where: { email } });
     if(userAlreadyExists) {
-      throw new Error('User already exists!')
+      throw new Error('User already exists, try another e-mail!')
     }
     
     const user = await prisma.user.create({

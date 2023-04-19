@@ -49,7 +49,7 @@ export default function Register() {
             } catch (error) {
               Swal.fire({
                 title: 'Erro',
-                text: "Esse e-mail já está cadastrado!",
+                text: "Esse e-mail é inválido ou já está cadastrado!",
                 icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Voltar'
