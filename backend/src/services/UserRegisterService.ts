@@ -8,8 +8,13 @@ interface IUserRegisterService {
 }
 
 export class UserRegisterService {
-  async execute({name, email, password}: IUserRegisterService) {
-    const encryptedPassword = await bcrypt.hash(password, 10)
+  async execute({ name, email, password }: IUserRegisterService) {
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
+    const userAlreadyExists = await prisma.user.findFirst({ where: { email } });
+    if(userAlreadyExists) {
+      throw new Error('User already exists!')
+    }
     
     const user = await prisma.user.create({
       data: {

@@ -2,13 +2,19 @@ import { Request, Response } from "express";
 import { UserRegisterService } from "../services/UserRegisterService";
 import { UserLoginService } from "../services/UserLoginService";
 import { GetUserByIdService } from "../services/GetUserByIdService";
+import { validateUser } from "../middlewares/userValidations";
+
 
 export class UserController {
   async register(req:Request, res: Response) {
     try {
       const { name, email, password } = req.body;
-      const userRegisterService = new UserRegisterService();
+      const validation = validateUser(name, email, password)
+      if(validation.error) {
+        return res.status(403).json(validation.error.message)
+      }
 
+      const userRegisterService = new UserRegisterService();
       await userRegisterService.execute({
         name,
         email,
@@ -16,9 +22,8 @@ export class UserController {
       });
 
       return res.status(201).send();
-
     } catch (error) {
-      return res.status(500).json({message: 'Server Error'})
+      return res.status(500).json({message: 'User already exists!'})
     }
   }
 

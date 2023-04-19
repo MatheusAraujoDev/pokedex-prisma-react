@@ -15,6 +15,11 @@ interface ICreatePokemonService {
 export class CreatePokemonService {
   async execute({ name, pokedexNumber, type1, type2, weather1, weather2, atk, def, userId }: ICreatePokemonService) {
 
+    const pokemonAlreadyExists = await prisma.pokemon.findFirst({ where: { name } });
+    if(pokemonAlreadyExists) {
+      throw new Error('Pokémon already exists!')
+    }
+
     const pokemon = await prisma.pokemon.create({
       data: {
         name,

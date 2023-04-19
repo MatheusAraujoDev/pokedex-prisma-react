@@ -4,6 +4,7 @@ import { GetPokemonsByUserId } from "../services/GetPokemonByUserId";
 import { GetPokemonById } from "../services/GetPokemonById";
 import { UpdatePokemon } from "../services/UpdatePokemon";
 import { DeletePokemons } from "../services/DeletePokemons";
+import { validatePokemon } from "../middlewares/pokemonValidations";
 
 export class PokemonsController {
   async createPokemon(req: Request, res: Response) {
@@ -11,8 +12,12 @@ export class PokemonsController {
       const { userId } = req;
       const { name, pokedexNumber, type1, type2, weather1, weather2, atk, def } = req.body;
 
-      const createPokemonService = new CreatePokemonService();
+      const validation = validatePokemon(name, pokedexNumber, type1, type2, weather1 ,weather2 ,atk ,def ,userId)
+      if(validation.error) {
+        return res.status(403).json(validation.error.message)
+      }
 
+      const createPokemonService = new CreatePokemonService();
       const pokemon = await createPokemonService.execute({
         name,
         pokedexNumber,
@@ -27,7 +32,7 @@ export class PokemonsController {
 
       return res.status(201).json(pokemon);
     } catch (error) {
-      return res.status(500).json({message: 'Server Error'})
+      return res.status(500).json({message: 'Pokémon already exists!'})
     }
   }
 
