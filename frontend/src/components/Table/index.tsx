@@ -34,6 +34,23 @@ interface IPokemon {
   userId: string;
 }
 
+const modalStyles = {
+  content: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F5F5DB',
+    border: '1px solid black',
+    margin: '0 auto',
+    maxWidth: '50rem',
+  }
+};
+
+const modalButtonStyles = {
+  backgroundColor: 'black',
+  color: 'white',
+};
+
 export  function Datatable() {
   const [rowsSelected, setRowsSelected] = useState<GridRowId[]>([]);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
@@ -204,21 +221,18 @@ export  function Datatable() {
       <Modal
         isOpen={createModalIsOpen}
         onRequestClose={closeCreatePokemonModal}
+        style={modalStyles}
       >
         <div className='modal-container'>
-          <header className='header-title'>
-            <p>Adicione um Pokémon</p>
-            <HighlightOffIcon fontSize='large' color='error' onClick={closeCreatePokemonModal} />
+          <header>
+            <p className='header-title'>Adicione um Pokémon</p>
+          <HighlightOffIcon className='header-close-icon' fontSize='large' color='error' onClick={closeCreatePokemonModal} />
           </header>
-
+          
           <form className='modal-form' onSubmit={handleAdd}>
             <FormControl>
               <InputLabel htmlFor="name">Nome</InputLabel>
               <Input required id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="pokedexNumber">Número na Pokedéx</InputLabel>
-              <Input required id="pokedexNumber" type="number" value={pokedexNumber} onChange={(e) => setPokedexNumber(parseInt(e.target.value))} />
             </FormControl>
             <FormControl>
               <InputLabel htmlFor="type1">Tipo 1</InputLabel>
@@ -237,6 +251,10 @@ export  function Datatable() {
               <Input id="weather2" value={weather2} onChange={(e) => setWeather2(e.target.value)} />
             </FormControl>
             <FormControl>
+              <InputLabel htmlFor="pokedexNumber">Número na Pokedéx</InputLabel>
+              <Input required id="pokedexNumber" type="number" value={pokedexNumber} onChange={(e) => setPokedexNumber(parseInt(e.target.value))} />
+            </FormControl>
+            <FormControl>
               <InputLabel htmlFor="atk">Ataque</InputLabel>
               <Input required id="atk" type="number" value={atk} onChange={(e) => setAtk(parseInt(e.target.value))} />
             </FormControl>
@@ -246,8 +264,8 @@ export  function Datatable() {
             </FormControl>
           
           <Button
+              style={modalButtonStyles}
               type="submit"
-              color='success'
               variant="contained"
             >
               Salvar
@@ -260,21 +278,18 @@ export  function Datatable() {
       <Modal
         isOpen={editModalIsOpen}
         onRequestClose={closeEditPokemonModal}
+        style={modalStyles}
       >
         <div className='modal-container'>
-          <header className='header-title'>
-            <p>Edite seu Pokémon</p>
-            <HighlightOffIcon fontSize='large' color='error' onClick={closeEditPokemonModal} />
+          <header>
+            <p className='header-title'>Edite seu Pokémon</p>
+            <HighlightOffIcon fontSize='large' className='header-close-icon' color='error' onClick={closeEditPokemonModal} />
           </header>
 
           <form className='modal-form' onSubmit={handleEdit}>
           <FormControl>
               <InputLabel htmlFor="name">Nome</InputLabel>
               <Input required id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="pokedexNumber">Número na Pokedéx</InputLabel>
-              <Input required id="pokedexNumber" type="number" value={pokedexNumber} onChange={(e) => setPokedexNumber(parseInt(e.target.value))} />
             </FormControl>
             <FormControl>
               <InputLabel htmlFor="type1">Tipo 1</InputLabel>
@@ -293,6 +308,10 @@ export  function Datatable() {
               <Input id="weather2" value={weather2} onChange={(e) => setWeather2(e.target.value)} />
             </FormControl>
             <FormControl>
+              <InputLabel htmlFor="pokedexNumber">Número na Pokedéx</InputLabel>
+              <Input required id="pokedexNumber" type="number" value={pokedexNumber} onChange={(e) => setPokedexNumber(parseInt(e.target.value))} />
+            </FormControl>
+            <FormControl>
               <InputLabel htmlFor="atk">Ataque</InputLabel>
               <Input required id="atk" type="number" value={atk} onChange={(e) => setAtk(parseInt(e.target.value))} />
             </FormControl>
@@ -302,8 +321,8 @@ export  function Datatable() {
             </FormControl>
           
           <Button
+              style={modalButtonStyles}
               type="submit"
-              color='success'
               variant="contained"
             >
               Salvar

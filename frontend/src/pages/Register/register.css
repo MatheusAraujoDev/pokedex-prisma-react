@@ -20,7 +20,9 @@
   padding: 2rem;
   font-size: xx-large;
   font-weight: bolder;
-  font-family: 'Press Start 2P'
+  font-family: 'Press Start 2P';
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #333, 4px 4px 0 #444;
 }
 
 @keyframes pulsing {

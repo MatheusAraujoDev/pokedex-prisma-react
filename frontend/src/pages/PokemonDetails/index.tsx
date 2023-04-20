@@ -58,7 +58,12 @@ export default function PokemonDetails() {
         }}
       >
 
-        <Paper className='pokemon-card-box'>
+        <Paper
+          className='pokemon-card-box'
+          sx={{
+            backgroundColor: "#F5F5DB"
+          }}
+        >
           <main className='pokemon-card'>
             <div className='pokemon-card-go-back'><UndoIcon style={{cursor: 'pointer'}} color='info' onClick={() => navigate(`/pokemonlist`)} /></div>
             
